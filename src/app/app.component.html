@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+</style>
+</head>
+<body>
+
+
+<div style="border: 2px solid black; width: fit-content; padding: 40px; margin: auto; font-family: Arial, Helvetica, sans-serif;" >
+
+  <h2>District Serach</h2>
+<form  name="form" [formGroup]="form" (ngSubmit)="form.valid && Submit()">
+  <label for="dname">District Name:</label><br>
+  <input type="text"  id="dname" formControlName="dname" name="dname" ngModel><br><br>
+  <label for="area">Area:</label><br>
+  <input type="number" id="area" formControlName="area" name="area" min="1" ngModel><br><br>
+  <label for="popul">Population:</label><br>
+  <input type="number" id="popul" formControlName="popul" name="popul" min="1" ngModel><br><br>
+  <input type="submit" value="Save">
+</form>
+</div><br><br>
+
+
+<div >
+  <div>
+    <h5 style="text-align: center;">Biggest District Area Wise Highlighted in Yellow</h5>
+    <div class="row border">
+        <div class="col-2 m-1 pt-3 pb-0" *ngFor="let d of district">
+          <div *ngIf="d.area == maxA">
+              <button class = "btn btn-warning" disabled="true">{{d.dname}}</button>
+            </div>
+          <div *ngIf="d.area != maxA">
+            <button class = "btn btn-light" disabled="true">{{d.dname}}</button>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div >
+  <div>
+    <h5 style="text-align: center;">Biggest District Population Wise Highlighted inYellow</h5>
+    <div class="row border">
+        <div class="col-2 m-1 pt-3 pb-0" *ngFor="let d of district">
+          <div *ngIf="d.popul == maxP">
+              <button class = "btn btn-warning" disabled="true">{{d.dname}}</button>
+            </div>
+          <div *ngIf="d.popul != maxP">
+            <button class = "btn btn-light" disabled="true">{{d.dname}}</button>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
